@@ -21,6 +21,7 @@ footer{
 
 #container-data-api .card{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -30,6 +31,26 @@ footer{
     border: 2px solid rgb(210, 42, 42);
     background-color: rgba(137, 43, 226, 0.304);
     margin: 2rem auto;
+}
+
+.newCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    width: 10em;
+    height: 10em;
+    border: 2px solid rgb(210, 42, 42);
+    background-color: rgba(137, 43, 226, 0.304);
+    margin: 2rem auto;
+}
+
+.card p{
+    border: 2px solid brown;
+    background-color: aqua;
+    padding: 0.5rem 0;
 }
 
 .container {
