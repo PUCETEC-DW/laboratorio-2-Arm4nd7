@@ -6,16 +6,13 @@ let dataInputArray = [];
 
 
 testButton.addEventListener("click", () => {
-    // dataInputArray.push(input.value);
-    // console.log(dataInputArray);
-    if(dataApiArray.length < 2){
+    const valorInput = input.value.trim();
+    if (valorInput !== "") {
+        dataInputArray = [valorInput]; // solo guarda 1 valor
         filterSearch();
-    }else if (dataApiArray.length > 1) {
-        let dataRemove = dataApiArray.pop();
-        
+        console.log(dataInputArray);
     }
 });
-
 
 fetch("https://restcountries.com/v3.1/all")
     .then((response) => {
