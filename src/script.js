@@ -1,28 +1,34 @@
-const containerDataApi  = document.getElementById("container-data-api");
+const containerDataApi = document.getElementById("container-data-api");
 const testButton = document.querySelector(".test-button");
+const testInput = document.querySelector("input");
 
 
-fetch('https://restcountries.com/v3.1/all').then((response) => {
-    return response.json();
-}).then((countrys) => {
-    // for (let country = 0; country < countrys.length; country++) {
-    //     const p = document.createElement("p");
-    //     p.classList.add("data-api");
-    //     p.innerHTML = `<strong>${countrys[country].name.common}</strong>`;
-    //     containerDataApi.appendChild(p);
-    // }
-
-    countrys.forEach(country => {         
-        const div = document.createElement('div')
-        div.classList.add('card')
-        div.innerHTML = `<strong>${country.name.common}</strong>`;
-        containerDataApi.appendChild(div)
-    });
-
-});
-
+let dataApiArray = []
 
 testButton.addEventListener("click", () => {
-    let p = document.querySelector(".element-title");
-    p.textContent = "MIO";
+
+    let input = document.querySelector(".test-search");
+    let p = document.querySelector(".test-element");
+    p.textContent = input.value;
 });
+
+fetch("https://restcountries.com/v3.1/all")
+    .then((response) => {
+        return response.json();
+    }).then(data => {
+        showData(data);
+    })
+
+
+    
+function showData(countries) {
+    for (let country = 0; country < countries.length; country++) {
+        const div = document.createElement("div");
+        div.classList.add("card");
+        div.innerHTML = `<strong>${countries[country].continents}</strong>`;
+        containerDataApi.appendChild(div);
+    }
+}
+
+
+
