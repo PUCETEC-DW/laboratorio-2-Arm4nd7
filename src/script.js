@@ -4,12 +4,11 @@ let input = document.querySelector(".test-search");
 let dataApiArray = [];
 let dataInputArray = [];
 
-
 testButton.addEventListener("click", () => {
     const valorInput = input.value.trim();
     if (valorInput !== "") {
         dataInputArray = [valorInput]; // solo guarda 1 valor
-        filterSearch();
+        filterSearch(valorInput);
         console.log(dataInputArray);
     }
 });
@@ -19,33 +18,52 @@ fetch("https://restcountries.com/v3.1/all")
         return response.json();
     }).then(countries => {
         dataApiArray = countries;
-        showData(dataApiArray)
+        mainShowData();
     })
 
-function showData(countries) {
-    countries.forEach((country) => {
+function mainShowData() {
+    dataApiArray.forEach((country) => {
         const div = document.createElement("div");
-        const p = document.createElement("p");
-        const pContinent = document.createElement("p");
+        const pNmae = document.createElement("p");
+        const pRegion = document.createElement("p");
+        let imgFlag = document.createElement("div");
+        const pPopulation = document.createElement("p");
+        const pContinents = document.createElement("p");
         div.classList.add("card");
-        pContinent.innerHTML = `<strong>${country.continents}</strong>`;
-        p.innerHTML =`<strong>${country.name.common}</strong>`;
-        div.appendChild(pContinent);
-        div.appendChild(p);
+        pNmae.innerHTML = `<strong>${country.name.official}</strong>`;
+        pRegion.innerHTML = `<strong>${country.region}</strong>`;
+        imgFlag.innerHTML = `<img src="${country.flags.png}" alt="Bandera de ${country.name.common}">`;
+        pPopulation.innerHTML = `<strong>${country.population}</strong>`;
+        pContinents.innerHTML = `<strong>${country.continents}</strong>`;
+
+        div.appendChild(pNmae);
+        div.appendChild(pRegion);
+        div.appendChild(imgFlag);
+        div.appendChild(pPopulation);
+        div.appendChild(pContinents);
+
         containerDataApi.appendChild(div);
     })
 }
 
-function filterSearch() {
+function filterSearch(texto) {
     containerDataApi.innerHTML = "";
-    let pais = dataApiArray.filter(country => country.name.common.includes(input.value));
-    const storeWord = document.createElement("div");
-    const pSotoreWord = document.createElement("p");
-    storeWord.classList.add("newCard");
-    pSotoreWord.innerHTML = `<strong>${pais[0].name.common}</strong>`;
-    storeWord.appendChild(pSotoreWord);
-    containerDataApi.appendChild(storeWord);
-    console.log(pais);
+    const pais = dataApiArray.filter(country => 
+        country.name.common.toLowerCase().includes(texto.toLowerCase())
+    );
+    for (let i = 0; i < pais.length; i++) {
+        const storeWord = document.createElement("div");
+        const pSotoreWord = document.createElement("p");
+        // const flag = document.createElement("div");
+
+        storeWord.classList.add("newCard");
+        console.log(pais[i]);
+        pSotoreWord.innerHTML = `<strong>${pais[i].capital}</strong>`;
+        // flag.innerHTML = `<img src="${pais[i].flags.png}">`;
+        storeWord.appendChild(pSotoreWord);
+        // storeWord.appendChild(flag);
+        containerDataApi.appendChild(storeWord);
+    }
 }
 
 
