@@ -1,6 +1,8 @@
 const containerDataApi = document.getElementById("container-data-api");
 const searchButton = document.querySelector(".test-button");
 let searchInput = document.querySelector(".test-search");
+let selectInput = document.getElementById("continent-filter-select");
+
 let dataApiArray = [];
 let dataInputArray = [];
 
@@ -37,18 +39,35 @@ function showCardCountry(countries) {
 }
 
 function searchAndFilter(textInput) {
-    const name = dataApiArray.filter(country =>
+    const parameterInput = dataApiArray.filter(country =>
         country.name.common.toLowerCase().includes(textInput.toLowerCase()) ||
         country.continents[0].toLowerCase().includes(textInput.toLowerCase()) ||
         country.region.toLowerCase().includes(textInput.toLowerCase()) ||
         country.languages && Object.values(country.languages).some(language => 
             language.toLowerCase().includes(textInput.toLowerCase())) ||
-        country.region.toLowerCase().includes(textInput.toLowerCase()) ||
         country.currencies && Object.values(country.currencies).some(mony => 
             mony.name.toLowerCase().includes(textInput.toLowerCase())) ||
         country.capital?.[0]?.toLowerCase().includes(textInput.toLowerCase())
     );
-    return name;
+    return parameterInput;
+}
+
+function filterParameterContinent(checkOption){
+    const parameterOption = dataApiArray.filter(country => 
+        country.continents[0].toLowerCase().includes(checkOption.toLowerCase())
+    )
+    return parameterOption
+}
+
+function filterParameterMony(checkOption){
+    if(){
+
+    }
+    const parameterOption = dataApiArray.filter(country => 
+        country.currencies && Object.values(country.currencies).some(mony => 
+            mony.name.toLowerCase().includes(checkOption.toLowerCase()))
+    )
+    return parameterOption
 }
 
 fetch("https://restcountries.com/v3.1/all")
@@ -62,11 +81,14 @@ fetch("https://restcountries.com/v3.1/all")
 
     })
 
+
 searchButton.addEventListener("click", () => {
     const valueInput = searchInput.value.trim();
+    const valueSelect = selectInput.value.trim();
     if (valueInput === "") {
         window.alert("Empty values to search");
         showCardCountry(dataApiArray)
+        showCardCountry(filterParameterContinent(valueSelect))
     } else {
         showCardCountry(searchAndFilter(valueInput))
         console.log(searchAndFilter(valueInput))
@@ -81,3 +103,5 @@ searchInput.addEventListener("input", () => {
         showCardCountry(searchAndFilter(valueInput))
     }
 });
+
+
