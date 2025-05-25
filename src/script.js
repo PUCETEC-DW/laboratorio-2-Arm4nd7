@@ -32,14 +32,21 @@ function showCardCountry(countries) {
         return;
     }
     countries.forEach((country) => {
-        containerDataApi.appendChild(createCountryCard(country));
+        containerDataApi.appendChild(createCountryCard(country));     
     });
 }
 
 function searchAndFilter(textInput) {
     const name = dataApiArray.filter(country =>
-        country.name.common.toLowerCase().includes(textInput.toLowerCase()) || 
-        country.continents[0].toLowerCase().includes(textInput.toLowerCase())
+        country.name.common.toLowerCase().includes(textInput.toLowerCase()) ||
+        country.continents[0].toLowerCase().includes(textInput.toLowerCase()) ||
+        country.region.toLowerCase().includes(textInput.toLowerCase()) ||
+        country.languages && Object.values(country.languages).some(language => 
+            language.toLowerCase().includes(textInput.toLowerCase())) ||
+        country.region.toLowerCase().includes(textInput.toLowerCase()) ||
+        country.currencies && Object.values(country.currencies).some(mony => 
+            mony.name.toLowerCase().includes(textInput.toLowerCase())) ||
+        country.capital?.[0]?.toLowerCase().includes(textInput.toLowerCase())
     );
     return name;
 }
@@ -49,27 +56,28 @@ fetch("https://restcountries.com/v3.1/all")
         return response.json();
     }).then(countries => {
         dataApiArray = countries;
-        showCardCountry(dataApiArray);
+
+        showCardCountry(dataApiArray.sort((a, b) => a.name.official.localeCompare(b.name.official)));
+        console.log(dataApiArray)
+
     })
 
 searchButton.addEventListener("click", () => {
-    const valueInputName = searchInput.value.trim();
-
-    if (valueInputName === "" ) {
+    const valueInput = searchInput.value.trim();
+    if (valueInput === "") {
         window.alert("Empty values to search");
         showCardCountry(dataApiArray)
     } else {
-        showCardCountry(searchAndFilter(valueInputName))
-
+        showCardCountry(searchAndFilter(valueInput))
+        console.log(searchAndFilter(valueInput))
     }
 });
 
 searchInput.addEventListener("input", () => {
-    const valueInputName = searchInput.value.trim();
-    
-    if (valueInputName === "") {
+    const valueInput = searchInput.value.trim();
+    if (valueInput === "") {
         showCardCountry(dataApiArray)
     } else {
-        showCardCountry(searchAndFilter(valueInputName))
+        showCardCountry(searchAndFilter(valueInput))
     }
 });
