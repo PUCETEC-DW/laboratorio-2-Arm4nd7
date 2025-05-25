@@ -4,7 +4,7 @@ let searchInput = document.querySelector(".test-search");
 let dataApiArray = [];
 let dataInputArray = [];
 
-function createCardCountry(country) {
+function createCountryCard(country) {
     const div = document.createElement("div");
     div.classList.add("card");
     const pName = document.createElement("p");
@@ -28,20 +28,20 @@ function createCardCountry(country) {
 function showCardCountry(countries) {
     containerDataApi.innerHTML = "";
     if (countries.length === 0) {
-        window.alert("NO RESULTS, TRY AGAIN");
         containerDataApi.innerHTML = `<p>NO RESULTS, TRY AGAIN</p>`;
         return;
     }
     countries.forEach((country) => {
-        containerDataApi.appendChild(createCardCountry(country));
+        containerDataApi.appendChild(createCountryCard(country));
     });
 }
 
-function searchAndFilterName(texto) {
-    const pais = dataApiArray.filter(country =>
-        country.name.common.toLowerCase().includes(texto.toLowerCase())
+function searchAndFilter(textInput) {
+    const name = dataApiArray.filter(country =>
+        country.name.common.toLowerCase().includes(textInput.toLowerCase()) || 
+        country.continents[0].toLowerCase().includes(textInput.toLowerCase())
     );
-    return pais;
+    return name;
 }
 
 fetch("https://restcountries.com/v3.1/all")
@@ -53,20 +53,23 @@ fetch("https://restcountries.com/v3.1/all")
     })
 
 searchButton.addEventListener("click", () => {
-    const valorInput = searchInput.value.trim();
-    if (valorInput === "") {
+    const valueInputName = searchInput.value.trim();
+
+    if (valueInputName === "" ) {
         window.alert("Empty values to search");
         showCardCountry(dataApiArray)
     } else {
-        showCardCountry(searchAndFilterName(valorInput))
+        showCardCountry(searchAndFilter(valueInputName))
+
     }
 });
 
 searchInput.addEventListener("input", () => {
-    const valorInput = searchInput.value.trim();
-    if (valorInput === "") {
+    const valueInputName = searchInput.value.trim();
+    
+    if (valueInputName === "") {
         showCardCountry(dataApiArray)
     } else {
-        showCardCountry(searchAndFilterName(valorInput))
+        showCardCountry(searchAndFilter(valueInputName))
     }
 });
