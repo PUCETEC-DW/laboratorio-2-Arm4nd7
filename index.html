@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Buscador Paises Armando</title>
+</head>
+
+<body>
+    <header>
+        <h1>Countries Sreach</h1>
+    </header>
+    <main>
+        <section id="search-element">
+            <div class="container">
+                <input type="search" class="test-search" placeholder="Palabar a buscar...">
+                <button class="test-button-1" type="submit">
+                    <p>Search</p>
+                </button>
+            </div>
+
+            <div class="container">
+                <select id="continent-filter-select">
+                    <option value="">Void filter</option>
+                    <option value="All Continents">All Continents</option>
+                    <option value="Africa">Africa</option>
+                    <option value="Antarctica">Antarctica</option>
+                    <option value="Asia">Asia</option>
+                    <option value="North America">North America</option>
+                    <option value="South America">South America</option>
+                    <option value="Europe">Europe</option>
+                    <option value="Oceania">Oceania</option>
+                </select>
+                <button class="test-button-2" type="submit">
+                    <p>Search</p>
+                </button>
+            </div>
+
+            <div class="container">
+                <fieldset>
+                    <input type='checkbox' name='Country' id="checkboxCountry"> Capital
+                    <input type='checkbox' name='Langauge' id="checkboxLangauge"> Langauge
+                </fieldset>
+            </div>
+
+        </section>
+        <section id="container-data-api">
+            <div class="container">
+                <p class="test-element">Hola</p>
+            </div>
+        </section>
+    </main>
+    <footer class="page-foot">
+        <address>Quito, Ecuador</address>
+        <small>
+            <!--Entidades(cadena de caracter especial)-->
+            &copy; by Armando Estevez 2025
+        </small>
+    </footer>
+    <script src="script.js"></script>
+</body>
+
+</html>
