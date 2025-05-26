@@ -1,7 +1,6 @@
 {
 	"homepage": "",
 	"scripts": {
-		"predeploy": "pnpm run build",
 		"deploy": "gh-pages -d src"
 	},
 	"devDependencies": {
