@@ -16,14 +16,15 @@
         <section id="search-element">
             <div class="container">
                 <input type="search" class="test-search" placeholder="Ingresa elemento a buscar">
-                <button class="test-button" type="submit">
+                <button class="test-button-1" type="submit">
                     <p>Search</p>
                 </button>
             </div>
 
             <div class="container">
                 <select id="continent-filter-select">
-                    <option value="">Todos los continentes</option>
+                    <option value="">Void filter</option>
+                    <option value="All Continents">All Continents</option>
                     <option value="Africa">Africa</option>
                     <option value="Antarctica">Antarctica</option>
                     <option value="Asia">Asia</option>
@@ -31,15 +32,16 @@
                     <option value="South America">South America</option>
                     <option value="Europe">Europe</option>
                     <option value="Oceania">Oceania</option>
-
                 </select>
+                <button class="test-button-2" type="submit">
+                    <p>Search</p>
+                </button>
             </div>
 
             <div class="container">
                 <fieldset>
-                    <input type='checkbox' name='Mony' value='20-39'> Mony
-                    <input type='checkbox' name='Country' value='40-59'> Country
-                    <input type='checkbox' name='Langauge' value='60-79'> Langauge
+                    <input type='checkbox' name='Country' id="checkboxCountry"> Country
+                    <input type='checkbox' name='Langauge' id="checkboxLangauge"> Langauge
                 </fieldset>
             </div>
 

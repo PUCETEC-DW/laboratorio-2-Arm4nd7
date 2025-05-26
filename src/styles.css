@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
 }
@@ -9,86 +9,95 @@ body {
 }
 
 header {
-    background-color: aqua;
+    background-color: #abaac0;
     text-align: center;
+    padding: 2rem;
+}
+h1{
+    color: #fff5d2;
 }
 
 footer {
-    background-color: aqua;
+    margin-top: 100%;
+    height: 80px;
+    background-color: #abaac0;
     text-align: center;
+
 }
 
-#container-data-api .card {
+#search-element {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
+    padding: 0.4rem;
     align-items: center;
-    text-align: center;
-    margin: auto;
-    border: 2px solid rgb(210, 42, 42);
-    background-color: rgba(137, 43, 226, 0.304);
-    margin: 2rem auto;
+    background-color: #3cc35e68;
+    box-shadow: 2px 3px 5px #abaac0;
 }
 
-img {
-    width: 75%;
-    height: 75%;
-}
-
-.newCard {
+.container{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    margin: auto;
-    width: 10em;
-    height: 10em;
-    border: 2px solid rgb(210, 42, 42);
-    background-color: rgba(137, 43, 226, 0.304);
-    margin: 2rem auto;
 }
 
-.card p {
-    border: 2px solid brown;
-    background-color: aqua;
-    padding: 0.5rem 0;
-}
-
-.newCard p {
-    border: 2px solid brown;
-    background-color: aqua;
-    padding: 0.5rem 0;
-}
-
-.container {
-    max-width: auto;
-    width: 100%;
-    margin: auto;
-}
-
-#search-element{
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
-    flex-flow: row;
-    background-color: aquamarine;
-}
-
-fieldset{
+fieldset, input, select, select>option {
     display: flex;
     width: 75%;
     padding: 0.3rem;
     align-items: center;
-    justify-content: space-between;
-    background-color: brown;
+    margin: 0 1rem;
+    background-color: #fff5d2;
+    border-radius: 0.3rem;
+    box-shadow: 1px 2px 2px #5e9b73;
+    border: 0.01rem solid #5e9b73;
 }
 
-@media(width < 600px){
-    #search-element{
+button{
+    width: 4rem;
+    height: 2rem;
+    border: 2px solid #90c5a3a7;
+    border-radius: 0.3rem;
+    background-color: #abaac0;
+    box-shadow: 1px 3px 3px #90c5a3a7;
+}
+
+.container-data-api{
+    display: flex;
+    width: 1400px;
+}
+
+
+.card{
+    text-align: center;
+    margin: 2rem 1rem;
+    background-color: #3cc35e2a;
+    border-radius: 0.4rem;
+    box-shadow: 1px 3px 5px #abaac0;
+}
+
+.card p{
+    display: inline-block;
+    width: 20%;
+    height: 40px;
+    margin: 2rem 1rem;
+    box-shadow: 1px 5px 6px #abaac0;
+    border-radius: 0.2rem;
+    background-color: #fff5d2;
+    font-size: 100%;
+}
+
+img {
+    width: 30%;
+    height: 50%;
+    border-radius: 0.5rem;
+    margin: 2px;
+    box-shadow: 2px 3px 3px #5e9b73;
+}
+
+@media(width < 600px) {
+    #search-element {
         flex-wrap: wrap;
     }
-    fieldset{
+
+    fieldset {
         display: inline;
         text-align: center;
     }
