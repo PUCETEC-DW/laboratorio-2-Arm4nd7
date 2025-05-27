@@ -1,20 +1,24 @@
 const containerDataApi = document.getElementById("container-data-api");
 const searchButtonAll = document.querySelector(".test-button-1");
 const searchButtonContinent = document.querySelector(".test-button-2");
+const optionsDisable = document.querySelector("fieldset");
 let searchInput = document.querySelector(".test-search");
 let selectInput = document.getElementById("continent-filter-select");
-let optionInput1 = document.getElementById("checkboxCountry");
+let optionInput1 = document.getElementById("checkboxCapital");
 let optionInput2 = document.getElementById("checkboxLangauge");
+let optionInput3 = document.getElementById("checkboxCoatArms");
+
 
 
 let dataApiArray = [];
 
 function createCountryCard(country) {
+    const valueInput = searchInput.value.trim();
     const div = document.createElement("div");
     div.classList.add("card");
     const pName = document.createElement("p");
     const pRegion = document.createElement("p");
-    let imgFlag = document.createElement("div");
+    const imgFlag = document.createElement("div");
     const pPopulation = document.createElement("p");
     pName.innerHTML = `Name: <strong>${country.name.official}</strong>`;
     pRegion.innerHTML = `Region: <strong>${country.region}</strong>`;
@@ -26,7 +30,17 @@ function createCountryCard(country) {
     div.appendChild(imgFlag);
 
 
+    if (valueInput === "") {
+        optionsDisable.disabled = true;
+    } else {
+        optionsDisable.disabled = false;
+        optionsEvents(div)
+    }
 
+    return div;
+}
+
+function optionsEvents(div) {
     optionInput1.addEventListener("change", () => {
         const valueInput = searchInput.value.trim();
         if (optionInput1.checked && valueInput !== "") {
@@ -47,19 +61,23 @@ function createCountryCard(country) {
         }
     })
 
-
-    return div;
+    optionInput3.addEventListener("change", () => {
+        const valueInput = searchInput.value.trim();
+        if (optionInput3.checked && valueInput !== "") {
+            showCoatArms(div, searchAndFilter(valueInput))
+        } else {
+            const borrar = document.querySelector(".new-coat-arms")
+            borrar?.remove();
+        }
+    })
 }
 
 
-
 function createCity(div, country) {
-    if (optionInput1.checked) {
-        const city = document.createElement("p");
-        city.classList.add("new-city");
-        city.innerHTML = `Capital: <strong>${country.capital?.[0]}</strong>`;
-        div.appendChild(city);
-    }
+    const city = document.createElement("p");
+    city.classList.add("new-city");
+    city.innerHTML = `Capital: <strong>${country.capital?.[0]}</strong>`;
+    div.appendChild(city);
     return div;
 }
 
@@ -104,6 +122,27 @@ function showLangauge(div, countries) {
     });
 }
 
+
+function createCoatArms(div, country) {
+    const coatOfArms = document.createElement("div");
+    coatOfArms.classList.add("new-coat-arms");
+    if(country.coatOfArms && country.coatOfArms.png) {
+        coatOfArms.innerHTML = `<img src="${country.coatOfArms.png}">`;
+        div.appendChild(coatOfArms);
+    }
+    return div;
+}
+
+function showCoatArms(div, countries) {
+    containerDataApi.innerHTML = "";
+    if (countries.length === 0) {
+        containerDataApi.innerHTML = `<p>NO RESULTS, TRY AGAIN</p>`;
+        return;
+    }
+    countries.forEach((country) => {
+        containerDataApi.appendChild(createCoatArms(div, country));
+    });
+}
 
 
 
