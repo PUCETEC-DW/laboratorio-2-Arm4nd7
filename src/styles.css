@@ -84,7 +84,7 @@ button {
     box-shadow: 1px 3px 3px #90c5a3a7;
 }
 
-button:hover{
+button:hover {
     scale: 1.1;
 }
 
@@ -119,15 +119,14 @@ p>strong {
     color: #78778a;
 }
 
-img{
-    border: 0.2px solid #abaac0 ;
+img {
+    border: 0.2px solid #abaac0;
     width: 30%;
     height: 50%;
     border-radius: 0.5rem;
     margin: 2px;
     box-shadow: 2px 3px 3px #5e9b73;
 }
-
 
 @media(width < 600px) {
 
