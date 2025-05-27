@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
@@ -13,7 +13,8 @@ header {
     text-align: center;
     padding: 2rem;
 }
-h1{
+
+h1 {
     color: #fff5d2;
 }
 
@@ -34,11 +35,13 @@ footer {
     box-shadow: 2px 3px 5px #abaac0;
 }
 
-.container{
+.container {
     display: flex;
 }
 
-fieldset, .test-search, #continent-filter-select{
+fieldset,
+.test-search,
+#continent-filter-select {
     display: flex;
     padding: 0.3rem;
     align-items: center;
@@ -49,17 +52,30 @@ fieldset, .test-search, #continent-filter-select{
     border: 0.01rem solid #5e9b73;
 }
 
-#checkboxCountry[type = "checkbox"], #checkboxLangauge[type = "checkbox"]{
+#checkboxCapital[type="checkbox"],
+#checkboxLangauge[type="checkbox"],
+#checkboxCoatArms[type="checkbox"] {
     display: flex;
     margin: 0 1rem;
-    transform: scale(1.5); 
+    scale: 1.5;
 }
-input,select, fieldset{
+
+#checkboxCapital[type="checkbox"]:hover,
+#checkboxLangauge[type="checkbox"]:hover,
+#checkboxCoatArms[type="checkbox"]:hover {
+    display: flex;
+    margin: 0 1rem;
+    scale: 2;
+}
+
+input,
+select,
+fieldset {
     font-size: 20px;
     width: 50%;
 }
 
-button{
+button {
     width: 4rem;
     height: 2rem;
     border: 2px solid #90c5a3a7;
@@ -68,13 +84,17 @@ button{
     box-shadow: 1px 3px 3px #90c5a3a7;
 }
 
-.container-data-api{
+button:hover{
+    scale: 1.1;
+}
+
+.container-data-api {
     display: flex;
     width: 1400px;
 }
 
 
-.card{
+.card {
     text-align: center;
     margin: 2rem 1rem;
     border-radius: 0.4rem;
@@ -82,7 +102,7 @@ button{
     box-shadow: 1px 3px 5px #abaac0;
 }
 
-.card p{
+.card p {
     display: inline-block;
     padding: 0.3rem;
     height: 50px;
@@ -90,16 +110,17 @@ button{
     border-radius: 0.2rem;
     font-size: 20px;
     box-shadow: 1px 5px 6px #abaac0;
-    background-color: #fff5d2; 
+    background-color: #fff5d2;
 }
 
-p>strong{
+p>strong {
     display: flex;
     padding: 0.2rem;
     color: #78778a;
 }
 
-img {
+img{
+    border: 0.2px solid #abaac0 ;
     width: 30%;
     height: 50%;
     border-radius: 0.5rem;
@@ -107,13 +128,13 @@ img {
     box-shadow: 2px 3px 3px #5e9b73;
 }
 
+
 @media(width < 600px) {
-    
+
     #search-element {
         flex-wrap: wrap;
     }
 
-    
     fieldset {
         display: inline;
         text-align: center;
