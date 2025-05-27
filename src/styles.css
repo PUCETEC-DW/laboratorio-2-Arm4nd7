@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: 'Times New Roman', Times, serif;
+    color: #333;
+    background-color: #e6f0ef;
+}
+
+header {
+    text-align: center;
+    padding: 2rem;
+    background-color: #abaac0;
+    box-shadow: 0 4px 6px #222224;
+}
+
+h1 {
+    font-size: 5rem;
+    color: #fff5d2;
+    text-shadow: #050407 2px 3px 5px;
+}
+
+main {
+    display: flex;
+    justify-content: center;    
+    justify-content: space-around;
+    padding: 2rem;
+    background-image: linear-gradient(
+            to top, #55985cbc, #3fe4b227
+        ),
+        url("https://img.freepik.com/fotos-premium/arafed-map-of-the-world-with-blue-background-generative-ai_900321-39298.jpg");
+}
+
+#container2 {
+    background-color: #7faab57a;
+    border-radius: 0.5rem;
+}
+
+footer {
+    margin-top: auto;
+    width: 100%;
+    height: 80px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    background-color: #abaac0;
+    color: #fff5d2;
+    box-shadow: 0 -2px 6px #222224;
+}
+
+#search-element {
+    position: fixed;
+    margin-right: 4rem;
+    padding: 1rem;
+    min-height: 400px;
+    justify-content: space-between;
+    border-radius: 0.7rem;
+    background-color: #3f95749e;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 4px 3px 7px #abaac0;
+
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+fieldset,
+.test-search,
+#continent-filter-select {
+    display: flex;
+    padding: 0.5rem;
+    align-items: center;
+    margin: 0.5rem 0;
+    width: 100%;
+    border-radius: 0.3rem;
+    background-color: #fff5d2;
+    box-shadow: 1px 2px 2px #5e9b73;
+    border: 1px solid #5e9b73;
+}
+
+input,
+select {
+    font-size: 1rem;
+    padding: 0.4rem;
+    border: none;
+    border-radius: 0.3rem;
+    width: 100%;
+}
+
+button {
+    width: 100px;
+    height: 40px;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    font-size: 1rem;
+    border: 2px solid #90c5a3a7;
+    background-color: #abaac0;
+    box-shadow: 1px 3px 3px #90c5a3a7;
+}
+
+button:hover {
+    scale: 1.1;
+    background-color: #9c9ab3;
+}
+
+#checkboxCapital[type="checkbox"],
+#checkboxLangauge[type="checkbox"],
+#checkboxCoatArms[type="checkbox"] {
+    transform: scale(1.5);
+    margin-right: 0.5rem;
+}
+
+#checkboxCapital:hover,
+#checkboxLangauge:hover,
+#checkboxCoatArms:hover {
+    transform: scale(2);
+}
+
+#container-data-api {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    text-align: center;
+    margin: 1rem 0;
+    border-radius: 0.4rem;
+    max-width: 500px;
+    padding: 1rem;
+    border-radius: 0.7rem;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: #3f957471;
+    box-shadow: 4px 3px 7px #abaac0;
+}
+
+.card p {
+    display: inline-block;
+    padding: 0.5rem;
+    margin: 1rem 1rem;
+    border-radius: 0.2rem;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    box-shadow: 1px 5px 6px #abaac0;
+    background-color: #fff5d2;
+}
+
+p > strong {
+    display: block;
+    color: #78778a;
+}
+
+img {
+    width: 80%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 0.5rem;
+    margin: 1rem auto;
+    border: 2px solid #abaac0;
+    box-shadow: 2px 3px 3px #5e9b73;
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #search-element {
+        position: static;
+        width: 90%;
+    }
+
+    fieldset {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+}
