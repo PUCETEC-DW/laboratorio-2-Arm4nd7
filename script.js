@@ -72,7 +72,6 @@ function optionsEvents(div) {
     })
 }
 
-
 function createCity(div, country) {
     const city = document.createElement("p");
     city.classList.add("new-city");
@@ -122,11 +121,10 @@ function showLangauge(div, countries) {
     });
 }
 
-
 function createCoatArms(div, country) {
     const coatOfArms = document.createElement("div");
     coatOfArms.classList.add("new-coat-arms");
-    if(country.coatOfArms && country.coatOfArms.png) {
+    if (country.coatOfArms && country.coatOfArms.png) {
         coatOfArms.innerHTML = `<img src="${country.coatOfArms.png}">`;
         div.appendChild(coatOfArms);
     }
@@ -143,8 +141,6 @@ function showCoatArms(div, countries) {
         containerDataApi.appendChild(createCoatArms(div, country));
     });
 }
-
-
 
 function showCardCountry(countries) {
     containerDataApi.innerHTML = "";
@@ -172,23 +168,12 @@ function searchAndFilter(textInput) {
     return parameterInput;
 }
 
-
 function filterParameterContinent(selectOption) {
     const parameterOption = dataApiArray.filter(country =>
         country.continents[0].toLowerCase().includes(selectOption.toLowerCase())
     )
     return parameterOption
 }
-
-fetch("https://restcountries.com/v3.1/all")
-    .then((response) => {
-        return response.json();
-    }).then(countries => {
-        dataApiArray = countries;
-        showCardCountry(dataApiArray.sort((a, b) => a.name.official.localeCompare(b.name.official)));
-    })
-
-
 
 searchButtonAll.addEventListener("click", () => {
     const valueInput = searchInput.value.trim();
@@ -198,7 +183,6 @@ searchButtonAll.addEventListener("click", () => {
         console.log(searchAndFilter(valueInput))
     }
 });
-
 
 searchButtonContinent.addEventListener("click", () => {
     const valueSelect = selectInput.value.trim();
@@ -220,5 +204,13 @@ searchInput.addEventListener("input", () => {
         showCardCountry(searchAndFilter(valueInput))
     }
 });
+
+fetch("https://restcountries.com/v3.1/all")
+    .then((response) => {
+        return response.json();
+    }).then(countries => {
+        dataApiArray = countries;
+        showCardCountry(dataApiArray.sort((a, b) => a.name.official.localeCompare(b.name.official)));
+    })
 
 
