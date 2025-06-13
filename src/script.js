@@ -154,7 +154,7 @@ function showCardCountry(countries) {
 }
 
 function searchAndFilter(textInput) {
-    const parameterInput = dataApiArray.filter(country =>
+    const parameterInput = dataApiArray.filter(country => {
         country.name.common.toLowerCase() === textInput.toLowerCase() ||
         country.name.official.toLowerCase() === textInput.toLowerCase() ||
         country.continents[0].toLowerCase() === textInput.toLowerCase() ||
@@ -164,7 +164,7 @@ function searchAndFilter(textInput) {
         country.currencies && Object.values(country.currencies).some(mony =>
             mony.name.toLowerCase().includes(textInput.toLowerCase())) ||
         country.capital?.[0]?.toLowerCase() === textInput.toLowerCase()
-    );
+    });
     return parameterInput;
 }
 
