@@ -154,17 +154,17 @@ function showCardCountry(countries) {
 }
 
 function searchAndFilter(textInput) {
-    const parameterInput = dataApiArray.filter(country => {
+    const parameterInput = dataApiArray.filter(country => 
         country.name.common.toLowerCase() === textInput.toLowerCase() ||
         country.name.official.toLowerCase() === textInput.toLowerCase() ||
         country.continents[0].toLowerCase() === textInput.toLowerCase() ||
-        country.region.toLowerCase().includes(textInput.toLowerCase()) ||
+        country.region[0].toLowerCase().includes(textInput.toLowerCase()) ||
         country.languages && Object.values(country.languages).some(language =>
             language.toLowerCase().includes(textInput.toLowerCase())) ||
         country.currencies && Object.values(country.currencies).some(mony =>
             mony.name.toLowerCase().includes(textInput.toLowerCase())) ||
         country.capital?.[0]?.toLowerCase() === textInput.toLowerCase()
-    });
+    );
     return parameterInput;
 }
 
@@ -205,7 +205,7 @@ searchInput.addEventListener("input", () => {
     }
 });
 
-fetch("https://restcountries.com/v3.1/all?fields=name,capital,flags")
+fetch("https://restcountries.com/v3.1/all?fields=name,capital,flags,coatOfArms,languages,subregion,region,currencies,continents")
     .then((response) => {
         return response.json();
     }).then(countries => {
