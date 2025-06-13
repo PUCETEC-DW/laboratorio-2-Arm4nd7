@@ -1,0 +1,9 @@
+{
+  "homepage": "https://arm4nd7.github.io/Buscador-Paises-PuArWe-4/",
+  "scripts": {
+    "deploy": "gh-pages -d src"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.3.0"
+  }
+}
