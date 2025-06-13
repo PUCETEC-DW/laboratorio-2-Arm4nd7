@@ -205,12 +205,12 @@ searchInput.addEventListener("input", () => {
     }
 });
 
-fetch("https://restcountries.com/v3.1/all")
+fetch("https://restcountries.com/v3.1/all?fields=name,capital,flags")
     .then((response) => {
         return response.json();
     }).then(countries => {
         dataApiArray = countries;
-        // showCardCountry(dataApiArray.sort((a, b) => a.name.official.localeCompare(b.name.official)));
+        showCardCountry(dataApiArray.sort((a, b) => a.name.official.localeCompare(b.name.official)));
     })
 
 
