@@ -210,7 +210,7 @@ fetch("https://restcountries.com/v3.1/all")
         return response.json();
     }).then(countries => {
         dataApiArray = countries;
-        showCardCountry(dataApiArray.sort((a, b) => a.name.official.localeCompare(b.name.official)));
+        // showCardCountry(dataApiArray.sort((a, b) => a.name.official.localeCompare(b.name.official)));
     })
 
 
